@@ -1,5 +1,39 @@
-@page "/activity"
+@page "/activity/{slug}"
+@inject OrchardCore.IOrchardHelper Orchard;
 @{
+    //string
+    var text = "Welcome to new world";
 
+    //boolean
+    bool active = true;
+
+    //int, decimal
+    var qty = 10 / 2;
+    var htmlText = "<div style='color:red;'>ข้อความ</div>";
+
+    var param = Slug;
 }
-<div> Activity </div>
+
+<p>Hello WOrld</p>
+
+@text
+
+@qty
+
+@if (active)
+{
+    @Html.Raw(htmlText)
+}
+else
+{
+   @htmlText 
+}
+
+PARAM >>  @param
+
+@functions
+{
+    //รับค่า params จาก url
+    [FromRoute]
+    public string Slug { get; set; }
+}
