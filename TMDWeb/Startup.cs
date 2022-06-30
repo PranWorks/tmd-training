@@ -30,7 +30,15 @@ namespace TMDWeb
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddOrchardCms().AddSetupFeatures("OrchardCore.AutoSetup");
-
+             services.AddOrchardCms()
+            .ConfigureServices(tenantServices =>
+                tenantServices.ConfigureHtmlSanitizer((sanitizer) =>
+                {
+                    sanitizer.AllowedTags.Add("iframe");
+                    sanitizer.AllowedTags.Add("script");
+                    sanitizer.AllowedTags.Add("style");
+                })
+            );
             //services.AddDbContext<TMDDbContext>(options =>
             //{
             //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
