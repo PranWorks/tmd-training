@@ -39,7 +39,7 @@ PARAM >>  @param
 }
 
 
-
+@*
 <script>alert("Demo Alert!")</script>
 
 
@@ -53,5 +53,26 @@ PARAM >>  @param
 <script>
 $( document ).ready(function() {
     alert("Demo Alert! Abc");
+});
+</script>*@
+
+
+
+
+<p class="demo"></p>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$( document ).ready(function() {
+    //alert("Demo Alert! Abc");
+
+$.ajax('https://localhost:44300/api/subpage/get-contentitem-alias?alias=location',   // request url
+    {
+        success: function (data, status, xhr) {// success callback function
+          //debugger;
+          alert(data.DisplayText);
+ 
+    }
+});
 });
 </script>
